@@ -1,0 +1,66 @@
+/* Styles personnalisés pour le slider et les checkboxes */
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Arrière-plan dégradé animé */
+.animated-gradient {
+    background-size: 200% 200%;
+    animation: gradient-animation 10s ease infinite;
+}
+
+@keyframes gradient-animation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Style pour le slider de longueur */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: #334155; /* slate-700 */
+    border-radius: 9999px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .2s;
+}
+
+input[type="range"]:hover {
+    opacity: 1;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #a78bfa; /* violet-400 */
+    cursor: pointer;
+    border-radius: 50%;
+    border: 4px solid #1e293b; /* slate-800 */
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: #a78bfa; /* violet-400 */
+    cursor: pointer;
+    border-radius: 50%;
+    border: 4px solid #1e293b; /* slate-800 */
+}
+
+/* Feedback au clic sur le bouton */
+.btn-generate:active {
+    transform: scale(0.98);
+    filter: brightness(1.1);
+}
+
+/* Message de copie */
+.copy-feedback {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
