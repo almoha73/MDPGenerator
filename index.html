@@ -9,87 +9,128 @@
     <!-- Chargement de la police Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Lien vers le fichier CSS personnalisé (pour les styles non-Tailwind) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lien vers le fichier CSS personnalisé -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-900 animated-gradient bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-slate-300 flex items-center justify-center min-h-screen p-4">
+<body class="bg-slate-950 animated-gradient bg-gradient-to-br from-slate-950 via-indigo-950 to-purple-950 text-slate-300 flex items-center justify-center min-h-screen p-4">
 
-    <div class="w-full max-w-md mx-auto">
-        <h1 class="text-2xl md:text-3xl font-bold text-center text-white mb-6 tracking-wide">
-            Générateur de Mots de Passe
-        </h1>
+    <div class="w-full max-w-lg mx-auto">
+        <!-- Header avec icône -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl mb-4 shadow-lg shadow-violet-500/25">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <circle cx="12" cy="16" r="1"></circle>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold text-white mb-2 tracking-tight">
+                Générateur de Mots de Passe
+            </h1>
+            <p class="text-slate-400 text-sm font-medium">
+                Créez des mots de passe sécurisés en quelques clics
+            </p>
+        </div>
 
         <div class="space-y-6">
             <!-- Champ d'affichage du mot de passe -->
-            <div class="relative bg-slate-800 p-4 rounded-lg flex items-center shadow-lg">
-                <span id="password-display" class="font-mono text-xl text-white flex-grow tracking-wider pr-2">P4$$w0rd!</span>
-                <button id="copy-button" class="flex-shrink-0 p-2 rounded-md hover:bg-slate-700 transition-colors duration-200" title="Copier dans le presse-papiers">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-violet-400">
+            <div class="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 p-5 rounded-2xl flex items-center shadow-xl">
+                <span id="password-display" class="font-mono text-lg md:text-xl text-white flex-grow tracking-wider pr-3 break-all">P4$$w0rd!</span>
+                <button id="copy-button" class="flex-shrink-0 p-3 rounded-xl hover:bg-slate-700/50 transition-all duration-200 group" title="Copier dans le presse-papiers">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-violet-400 group-hover:text-violet-300 transition-colors">
                         <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                         <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                     </svg>
                 </button>
-                 <div id="copy-feedback" class="copy-feedback absolute top-[-30px] right-0 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md opacity-0 transform translate-y-2">Copié !</div>
+                <div id="copy-feedback" class="copy-feedback absolute -top-12 right-0 bg-green-500 text-white text-xs font-semibold px-3 py-2 rounded-lg opacity-0 transform translate-y-2 shadow-lg">
+                    <div class="flex items-center gap-1">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20,6 9,17 4,12"></polyline>
+                        </svg>
+                        Copié !
+                    </div>
+                </div>
             </div>
 
             <!-- Panneau de configuration -->
-            <div class="bg-slate-800 p-6 rounded-lg shadow-lg space-y-6">
+            <div class="bg-slate-800/30 backdrop-blur-sm border border-slate-700/30 p-6 rounded-2xl shadow-xl space-y-8">
                 <!-- Sélecteur de longueur -->
-                <div class="space-y-3">
+                <div class="space-y-4">
                     <div class="flex justify-between items-center">
-                        <label for="length" class="font-medium text-slate-300">Longueur du mot de passe</label>
-                        <span id="length-value" class="text-xl font-bold text-violet-400">16</span>
+                        <label for="length" class="font-semibold text-slate-200 text-sm uppercase tracking-wide">Longueur du mot de passe</label>
+                        <div class="bg-violet-500/20 border border-violet-500/30 px-3 py-1 rounded-lg">
+                            <span id="length-value" class="text-xl font-bold text-violet-300">16</span>
+                        </div>
                     </div>
-                    <input type="range" id="length" min="8" max="32" value="16" class="w-full">
+                    <input type="range" id="length" min="8" max="32" value="16" class="w-full slider">
+                    <div class="flex justify-between text-xs text-slate-500 font-medium">
+                        <span>8</span>
+                        <span>32</span>
+                    </div>
                 </div>
 
                 <!-- Options des caractères -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div class="flex items-center">
-                        <input id="uppercase" type="checkbox" checked class="h-5 w-5 bg-slate-700 border-slate-600 text-violet-500 focus:ring-violet-500 rounded">
-                        <label for="uppercase" class="ml-3 text-sm font-medium text-slate-300">Inclure les majuscules (A-Z)</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input id="lowercase" type="checkbox" checked class="h-5 w-5 bg-slate-700 border-slate-600 text-violet-500 focus:ring-violet-500 rounded">
-                        <label for="lowercase" class="ml-3 text-sm font-medium text-slate-300">Inclure les minuscules (a-z)</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input id="numbers" type="checkbox" checked class="h-5 w-5 bg-slate-700 border-slate-600 text-violet-500 focus:ring-violet-500 rounded">
-                        <label for="numbers" class="ml-3 text-sm font-medium text-slate-300">Inclure les nombres (0-9)</label>
-                    </div>
-                    <div class="flex items-center">
-                        <input id="symbols" type="checkbox" class="h-5 w-5 bg-slate-700 border-slate-600 text-violet-500 focus:ring-violet-500 rounded">
-                        <label for="symbols" class="ml-3 text-sm font-medium text-slate-300">Inclure les symboles (!@#$)</label>
-                    </div>
-                </div>
-
-                <!-- Indicateur de force -->
-                <div class="bg-slate-700/50 p-3 rounded-lg flex items-center justify-between">
-                    <span class="text-sm font-medium text-slate-400">Force</span>
-                    <div class="flex items-center gap-2">
-                        <span id="strength-text" class="text-sm font-bold uppercase">Moyenne</span>
-                        <div id="strength-bars" class="flex gap-1.5">
-                            <div class="w-4 h-6 rounded-sm bg-slate-600"></div>
-                            <div class="w-4 h-6 rounded-sm bg-slate-600"></div>
-                            <div class="w-4 h-6 rounded-sm bg-slate-600"></div>
-                            <div class="w-4 h-6 rounded-sm bg-slate-600"></div>
+                <div class="space-y-4">
+                    <h3 class="font-semibold text-slate-200 text-sm uppercase tracking-wide">Types de caractères</h3>
+                    <div class="grid grid-cols-1 gap-3">
+                        <div class="flex items-center p-3 rounded-xl bg-slate-700/30 border border-slate-600/30 hover:bg-slate-700/50 transition-colors">
+                            <input id="uppercase" type="checkbox" checked class="checkbox">
+                            <label for="uppercase" class="ml-4 text-sm font-medium text-slate-200 flex-grow cursor-pointer">
+                                <span class="block">Majuscules</span>
+                                <span class="text-xs text-slate-400 font-mono">A-Z</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center p-3 rounded-xl bg-slate-700/30 border border-slate-600/30 hover:bg-slate-700/50 transition-colors">
+                            <input id="lowercase" type="checkbox" checked class="checkbox">
+                            <label for="lowercase" class="ml-4 text-sm font-medium text-slate-200 flex-grow cursor-pointer">
+                                <span class="block">Minuscules</span>
+                                <span class="text-xs text-slate-400 font-mono">a-z</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center p-3 rounded-xl bg-slate-700/30 border border-slate-600/30 hover:bg-slate-700/50 transition-colors">
+                            <input id="numbers" type="checkbox" checked class="checkbox">
+                            <label for="numbers" class="ml-4 text-sm font-medium text-slate-200 flex-grow cursor-pointer">
+                                <span class="block">Nombres</span>
+                                <span class="text-xs text-slate-400 font-mono">0-9</span>
+                            </label>
+                        </div>
+                        <div class="flex items-center p-3 rounded-xl bg-slate-700/30 border border-slate-600/30 hover:bg-slate-700/50 transition-colors">
+                            <input id="symbols" type="checkbox" class="checkbox">
+                            <label for="symbols" class="ml-4 text-sm font-medium text-slate-200 flex-grow cursor-pointer">
+                                <span class="block">Symboles</span>
+                                <span class="text-xs text-slate-400 font-mono">!@#$%^&*</span>
+                            </label>
                         </div>
                     </div>
                 </div>
 
+                <!-- Indicateur de force -->
+                <div class="bg-slate-700/20 border border-slate-600/20 p-4 rounded-xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-sm font-semibold text-slate-300 uppercase tracking-wide">Force du mot de passe</span>
+                        <span id="strength-text" class="text-sm font-bold uppercase px-2 py-1 rounded-md bg-yellow-500/20 text-yellow-400">Moyenne</span>
+                    </div>
+                    <div id="strength-bars" class="flex gap-2">
+                        <div class="flex-1 h-2 rounded-full bg-slate-600"></div>
+                        <div class="flex-1 h-2 rounded-full bg-slate-600"></div>
+                        <div class="flex-1 h-2 rounded-full bg-slate-600"></div>
+                        <div class="flex-1 h-2 rounded-full bg-slate-600"></div>
+                    </div>
+                </div>
+
                 <!-- Bouton Générer -->
-                <button id="generate-button" class="btn-generate w-full bg-violet-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-violet-700 transition-all duration-200 shadow-lg shadow-violet-900/40 flex items-center justify-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <button id="generate-button" class="btn-generate w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 shadow-lg shadow-violet-900/40 hover:shadow-violet-900/60 flex items-center justify-center gap-3 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:rotate-180 transition-transform duration-300">
                         <path d="M21 12a9 9 0 1 1-6.219-8.56"></path>
                     </svg>
-                    Générer le mot de passe
+                    Générer un nouveau mot de passe
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Lien vers le fichier JavaScript, 'defer' assure l'exécution après l'analyse du HTML -->
+    <!-- Lien vers le fichier JavaScript -->
     <script src="script.js" defer></script>
 </body>
 </html>
