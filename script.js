@@ -21,31 +21,31 @@ const charSets = {
     symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
 };
 
-// Configuration des couleurs et textes pour la force
+// Configuration des couleurs et textes pour la force avec la nouvelle palette
 const strengthConfig = {
     1: { 
         text: 'Faible', 
-        color: 'bg-red-500', 
-        textColor: 'text-red-400',
-        bgColor: 'bg-red-500/20'
+        color: 'var(--color-1)', 
+        textColor: 'var(--color-1)',
+        bgColor: 'rgba(var(--color-1-rgb), 0.2)'
     },
     2: { 
         text: 'Moyenne', 
-        color: 'bg-yellow-500', 
-        textColor: 'text-yellow-400',
-        bgColor: 'bg-yellow-500/20'
+        color: 'var(--color-3)', 
+        textColor: 'var(--color-3)',
+        bgColor: 'rgba(var(--color-3-rgb), 0.2)'
     },
     3: { 
         text: 'Forte', 
-        color: 'bg-green-500', 
-        textColor: 'text-green-400',
-        bgColor: 'bg-green-500/20'
+        color: 'var(--color-2)', 
+        textColor: 'var(--color-2)',
+        bgColor: 'rgba(var(--color-2-rgb), 0.2)'
     },
     4: { 
         text: 'Très forte', 
-        color: 'bg-emerald-500', 
-        textColor: 'text-emerald-400',
-        bgColor: 'bg-emerald-500/20'
+        color: 'var(--color-4)', 
+        textColor: 'var(--color-4)',
+        bgColor: 'rgba(var(--color-4-rgb), 0.2)'
     }
 };
 
@@ -54,9 +54,9 @@ const updateLengthValue = () => {
     if (lengthValue && lengthSlider) {
         lengthValue.textContent = lengthSlider.value;
         
-        // Mise à jour visuelle du slider
+        // Mise à jour visuelle du slider avec la nouvelle palette
         const value = ((lengthSlider.value - lengthSlider.min) / (lengthSlider.max - lengthSlider.min)) * 100;
-        lengthSlider.style.background = `linear-gradient(to right, #8b5cf6 0%, #8b5cf6 ${value}%, #334155 ${value}%, #334155 100%)`;
+        lengthSlider.style.background = `linear-gradient(to right, var(--color-3) 0%, var(--color-3) ${value}%, rgba(var(--color-1-rgb), 0.3) ${value}%, rgba(var(--color-1-rgb), 0.3) 100%)`;
     }
 };
 
@@ -86,9 +86,11 @@ const updateStrengthIndicator = () => {
     Array.from(strengthBars).forEach((bar, i) => {
         setTimeout(() => {
             if (i < score) {
-                bar.className = `flex-1 h-2 rounded-full ${config.color} transition-all duration-300`;
+                bar.style.background = config.color;
+                bar.className = 'flex-1 h-2 rounded-full transition-all duration-300';
             } else {
-                bar.className = 'flex-1 h-2 rounded-full bg-slate-600 transition-all duration-300';
+                bar.style.background = 'rgba(var(--color-1-rgb), 0.3)';
+                bar.className = 'flex-1 h-2 rounded-full transition-all duration-300';
             }
         }, i * 50);
     });
@@ -97,7 +99,8 @@ const updateStrengthIndicator = () => {
     strengthText.style.opacity = '0';
     setTimeout(() => {
         strengthText.textContent = config.text;
-        strengthText.className = `text-sm font-bold uppercase px-2 py-1 rounded-md ${config.bgColor} ${config.textColor} transition-all duration-300`;
+        strengthText.style.background = config.bgColor;
+        strengthText.style.color = config.textColor;
         strengthText.style.opacity = '1';
     }, 150);
 };
