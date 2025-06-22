@@ -1,0 +1,22 @@
+{
+  "name": "generateur-mots-de-passe",
+  "version": "1.0.0",
+  "description": "Générateur de mots de passe sécurisés avec interface moderne",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx vite --host",
+    "build": "npx vite build",
+    "preview": "npx vite preview"
+  },
+  "keywords": [
+    "password",
+    "generator",
+    "security",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
