@@ -23,24 +23,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Arrière-plan dégradé animé avec la nouvelle palette */
-.animated-gradient {
-    background: linear-gradient(-45deg, 
+/* Arrière-plan dégradé statique avec la nouvelle palette */
+.static-gradient {
+    background: linear-gradient(135deg, 
         rgba(var(--color-1-rgb), 0.9), 
-        rgba(var(--color-2-rgb), 0.8), 
-        rgba(var(--color-1-rgb), 0.7), 
-        rgba(var(--color-2-rgb), 0.9)
+        rgba(var(--color-2-rgb), 0.8)
     );
-    background-size: 400% 400%;
-    animation: gradient-animation 15s ease infinite;
-}
-
-@keyframes gradient-animation {
-    0% { background-position: 0% 50%; }
-    25% { background-position: 100% 50%; }
-    50% { background-position: 100% 100%; }
-    75% { background-position: 0% 100%; }
-    100% { background-position: 0% 50%; }
 }
 
 /* Style pour le slider de longueur */
