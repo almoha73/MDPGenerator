@@ -15,6 +15,14 @@
   --color-5: #f8ead3;
   --color-5-rgb: 248, 234, 211;
   --color-5-hsl: 38, 73%, 90%;
+  
+  /* Nouvelles couleurs sombres */
+  --dark-bg-1: #0f0f23;
+  --dark-bg-1-rgb: 15, 15, 35;
+  --dark-bg-2: #1a1a2e;
+  --dark-bg-2-rgb: 26, 26, 46;
+  --dark-bg-3: #16213e;
+  --dark-bg-3-rgb: 22, 33, 62;
 }
 
 body {
@@ -23,12 +31,14 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Arrière-plan dégradé statique avec la nouvelle palette */
+/* Arrière-plan dégradé beaucoup plus foncé */
 .static-gradient {
     background: linear-gradient(135deg, 
-        rgba(var(--color-1-rgb), 0.9), 
-        rgba(var(--color-2-rgb), 0.8)
+        var(--dark-bg-1) 0%,
+        var(--dark-bg-2) 50%,
+        var(--dark-bg-3) 100%
     );
+    min-height: 100vh;
 }
 
 /* Style pour le slider de longueur */
@@ -37,7 +47,7 @@ body {
     appearance: none;
     width: 100%;
     height: 6px;
-    background: linear-gradient(to right, rgba(var(--color-1-rgb), 0.3) 0%, rgba(var(--color-1-rgb), 0.3) 100%);
+    background: linear-gradient(to right, rgba(var(--color-1-rgb), 0.4) 0%, rgba(var(--color-1-rgb), 0.4) 100%);
     border-radius: 9999px;
     outline: none;
     transition: all 0.3s ease;
@@ -45,7 +55,7 @@ body {
 }
 
 .slider:hover {
-    background: linear-gradient(to right, rgba(var(--color-1-rgb), 0.5) 0%, rgba(var(--color-1-rgb), 0.5) 100%);
+    background: linear-gradient(to right, rgba(var(--color-1-rgb), 0.6) 0%, rgba(var(--color-1-rgb), 0.6) 100%);
 }
 
 .slider::-webkit-slider-thumb {
@@ -88,9 +98,9 @@ body {
     -webkit-appearance: none;
     width: 20px;
     height: 20px;
-    border: 2px solid rgba(var(--color-1-rgb), 0.6);
+    border: 2px solid rgba(var(--color-3-rgb), 0.4);
     border-radius: 6px;
-    background: rgba(var(--color-5-rgb), 0.1);
+    background: rgba(var(--dark-bg-2-rgb), 0.8);
     cursor: pointer;
     position: relative;
     transition: all 0.2s ease;
@@ -99,7 +109,7 @@ body {
 
 .checkbox:hover {
     border-color: var(--color-3);
-    background: rgba(var(--color-5-rgb), 0.2);
+    background: rgba(var(--dark-bg-2-rgb), 1);
 }
 
 .checkbox:checked {
@@ -127,6 +137,7 @@ body {
 
 .btn-generate:hover {
     transform: translateY(-1px);
+    box-shadow: 0 15px 35px rgba(var(--color-2-rgb), 0.4);
 }
 
 /* Message de copie amélioré */
@@ -164,19 +175,21 @@ body {
     animation: fadeInUp 0.6s ease-out;
 }
 
-/* Effet de glassmorphism avec la nouvelle palette */
+/* Effet de glassmorphism avec arrière-plan sombre */
 .bg-slate-800\/30 {
-    background: rgba(var(--color-5-rgb), 0.1) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(var(--color-3-rgb), 0.2) !important;
+    background: rgba(var(--dark-bg-2-rgb), 0.6) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(var(--color-3-rgb), 0.15) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .bg-slate-800\/50 {
-    background: rgba(var(--color-5-rgb), 0.15) !important;
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(var(--color-3-rgb), 0.3) !important;
+    background: rgba(var(--dark-bg-2-rgb), 0.8) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(var(--color-3-rgb), 0.2) !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 /* Responsive improvements */
@@ -200,14 +213,15 @@ body {
     outline-offset: 2px;
 }
 
-/* Hover effects pour les cartes d'options */
+/* Hover effects pour les cartes d'options avec arrière-plan sombre */
 .flex.items-center.p-3:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(var(--color-1-rgb), 0.1);
-    background: rgba(var(--color-5-rgb), 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    background: rgba(var(--dark-bg-2-rgb), 0.9) !important;
+    border-color: rgba(var(--color-3-rgb), 0.3) !important;
 }
 
-/* Styles spécifiques pour les éléments avec la nouvelle palette */
+/* Styles spécifiques pour les éléments avec la nouvelle palette sombre */
 .text-violet-400 {
     color: var(--color-3) !important;
 }
@@ -229,7 +243,7 @@ body {
 }
 
 .bg-slate-700\/30 {
-    background: rgba(var(--color-5-rgb), 0.1) !important;
+    background: rgba(var(--dark-bg-2-rgb), 0.4) !important;
 }
 
 .border-slate-600\/30 {
@@ -237,11 +251,11 @@ body {
 }
 
 .bg-slate-700\/50 {
-    background: rgba(var(--color-5-rgb), 0.15) !important;
+    background: rgba(var(--dark-bg-2-rgb), 0.6) !important;
 }
 
 .bg-slate-700\/20 {
-    background: rgba(var(--color-5-rgb), 0.08) !important;
+    background: rgba(var(--dark-bg-2-rgb), 0.3) !important;
 }
 
 .border-slate-600\/20 {
@@ -265,5 +279,22 @@ body {
 }
 
 .bg-slate-600 {
-    background: rgba(var(--color-1-rgb), 0.3) !important;
+    background: rgba(var(--color-1-rgb), 0.4) !important;
+}
+
+/* Amélioration des contrastes pour la lisibilité sur fond sombre */
+.text-slate-300 {
+    color: #e2e8f0 !important;
+}
+
+/* Ajout d'un effet de lueur subtile pour les éléments interactifs */
+.btn-generate {
+    box-shadow: 0 10px 25px rgba(var(--color-2-rgb), 0.3), 
+                0 0 0 1px rgba(var(--color-2-rgb), 0.1);
+}
+
+/* Amélioration de l'icône du header */
+.inline-flex.items-center.justify-center {
+    box-shadow: 0 10px 25px rgba(var(--color-2-rgb), 0.4), 
+                0 0 0 1px rgba(var(--color-2-rgb), 0.2) !important;
 }
